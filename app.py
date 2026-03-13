@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from textblob import TextBlob
 import re
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 # Configuración de la página
 st.set_page_config(
@@ -84,14 +84,11 @@ def contar_palabras(texto):
     
     return contador_ordenado, palabras_filtradas
 
-# Inicializar el traductor
-translator = Translator()
-
 # Función para traducir texto del español al inglés
 def traducir_texto(texto):
     try:
-        traduccion = translator.translate(texto, src='es', dest='en')
-        return traduccion.text
+        traduccion = GoogleTranslator(source='auto', target='en').translate(texto)
+        return traduccion
     except Exception as e:
         st.error(f"Error al traducir: {e}")
         return texto  # Devolver el texto original si falla la traducción
