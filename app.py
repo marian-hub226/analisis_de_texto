@@ -67,7 +67,7 @@ def contar_palabras(texto):
         "with","would","you","your","yours","yourself"
     ])
 
-palabras = re.findall(r'\b\w+\b', texto.lower())
+    palabras = re.findall(r'\b\w+\b', texto.lower())
 
     palabras_filtradas = [
         p for p in palabras
